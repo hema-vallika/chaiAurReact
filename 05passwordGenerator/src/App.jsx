@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [length, setLength] = useState(8)
+ const[length,setLength] = useState(8)
  const[numAllowed,setNumAllowed] = useState(false)
  const[charAllowed,setCharAllowed]= useState(false)
 
@@ -13,10 +13,9 @@ function App() {
  //useRef hook
  const passwordRef = useRef(null)
 
-
  const passwordGenerator = useCallback(() => {
   let pass =""
-  let str = "ABCDEFGHIJLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+  let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
   if(numAllowed) str+="0123456789"
   if(charAllowed) str+="!@#$%^&*([{]}~``])"
@@ -33,7 +32,6 @@ const copyPasswordToClipbord = useCallback(() => {
   passwordRef.current?.setSelectionRange(0,999)
   window.navigator.clipboard.writeText(Password)
 },[Password])
-
 
  useEffect(() => {
   passwordGenerator()
